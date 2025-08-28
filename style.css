@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: varela;
+  background: linear-gradient(to right, #1e202c, #60519b, #31323e);
+}
+
+@font-face {
+  font-family: "varela";
+  src: url("./assets/varela-round.ttf");
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style-type: none;
+}
