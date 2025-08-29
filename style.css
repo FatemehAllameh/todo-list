@@ -74,24 +74,6 @@ button {
 
 }
 
-/* responsive form */
-@media screen and (min-width: 700px) {
-  .form {
-    width: 60%;
-  }
-}
-
-@media screen and (min-width: 1100px) {
-  .form {
-    width: 55%;
-  }
-}
-
-@media screen and (min-width: 1220px) {
-  .form {
-    width: 35%;
-  }
-}
 
 .input {
   width: 100%;
@@ -112,7 +94,10 @@ button {
 
 .input:focus {
   background: rgba(255, 255, 255, 0.4);
+}
 
+.input:focus::placeholder {
+  color: #fff;
 }
 
 #add-input {}
@@ -134,9 +119,9 @@ button {
   justify-content: center;
   aspect-ratio: 1 / 1;
 }
-.fa {
+
+.form-btn i {
   pointer-events: none;
-  
 }
 
 .form-btn:hover {
@@ -147,7 +132,34 @@ button {
 #add-btn {
 }
 
-.alert-text {}
+.alert-text {
+  font-size: 2rem;
+  font-weight: lighter;
+  margin-top: 1.5rem;
+  color: #fff;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.4s;
+}
+
+.alert-text.show-alert-text {
+  height: auto;
+}
+
+.alert-text.animation-alert-text {
+  animation: alert-scale 1s ease;
+}
+@keyframes alert-scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 
 #edit-form-wrapper {
   position: fixed;
@@ -168,13 +180,74 @@ button {
   pointer-events: auto;
 }
 
-#edit-input {}
+#edit-form {
+  transform: translateY(100px);
+  transition: all 0.3s;
+}
 
-.edit-btn {
+#edit-form-wrapper.show-form #edit-form {
+  transform: translateY(0);
 
 }
 
-.todo-list {}
+#edit-input {}
+
+.todo-list {
+  width: 100vw;
+}
+
+.todo-item {
+  margin: 1rem auto;
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+  background: rgba(30, 32, 44, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 90%;
+  border-radius: 15px;
+  color: #fff;
+}
+
+
+.todo-text {
+  font-size: 2rem;
+  /* padding-left: 1rem; */
+  padding: 0.8rem 1rem;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  line-break: anywhere;
+}
+
+.todo-btn {
+  font-size: 2.8rem;
+  color: #fff;
+  transition: all 0.3s;
+  padding: 0.8rem;
+  width: 5rem;
+  cursor: pointer;
+  align-items: stretch;
+  min-height: 100%;
+}
+
+#edit-btn {
+  background: #27ad5ab9;
+  margin-right: 0;
+}
+
+#edit-btn:hover {
+  background: #1a8041;
+}
+
+#delete-btn {
+  background: #d7403bce;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+#delete-btn:hover {
+  background: #9f2b27;
+}
 
 .footer {
     text-align: center;
@@ -184,4 +257,32 @@ button {
     font-size: 1.5rem;
     color: #fff;
     margin-top: 10rem;
+}
+
+/* responsive form */
+@media screen and (min-width: 700px) {
+  .form {
+    width: 60%;
+  }
+  .todo-item {
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .form {
+    width: 55%;
+  }
+  .todo-item {
+    width: 55%;
+  }
+}
+
+@media screen and (min-width: 1220px) {
+  .form {
+    width: 35%;
+  }
+  .todo-item {
+    width: 35%;
+  }
 }

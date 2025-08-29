@@ -29,10 +29,10 @@
           </button>
         </form>
       </section>
-      <h3 class="alert-text"></h3>
+      <h4 class="alert-text"></h4>
       <!-- edit task form -->
       <section class="form-wrapper" id="edit-form-wrapper">
-        <form class="form">
+        <form class="form" id="edit-form">
           <input
             type="text"
             class="input"
@@ -40,21 +40,30 @@
             placeholder="Edit task"
             autocomplete="off"
           />
-          <button type="submit" class="form-btn" id="edit-btn">
+          <button type="submit" class="form-btn">
             <i class="fa fa-edit"></i>
           </button>
         </form>
       </section>
       <!-- Task List -->
-       <Ul class="todo-list"></Ul>
+      <ul class="todo-list">
+        <li class="todo-item">
+          <span class="todo-text">Do homework</span>
+
+          <button class="todo-btn" id="edit-btn">
+            <i class="fa fa-edit"></i>
+          </button>
+          <button class="todo-btn" id="delete-btn">
+            <i class="fa fa-trash"></i>
+          </button>
+        </li>
+      </ul>
     </div>
     <!-- FOOTER -->
-     <footer class="footer">
-        <p class="footer-text">
-            Made with 💗 by Fatemeh Allameh
-        </p>
-     </footer>
-     <!-- Script -->
-      <script src="./script.js"></script>
+    <footer class="footer">
+      <p class="footer-text">Made with 💗 by Fatemeh Allameh</p>
+    </footer>
+    <!-- Script -->
+    <script src="./script.js"></script>
   </body>
 </html>
