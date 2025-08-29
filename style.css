@@ -2,7 +2,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-size: 62.5%;
+  /*10px*/
 }
+
 
 body {
   font-family: varela;
@@ -21,4 +24,164 @@ a {
 
 ul {
   list-style-type: none;
+}
+
+button,
+input {
+  font-family: varela;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* HEADER */
+.header {
+    width: 100vw;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.header-text {
+    font-size: 3rem;
+    color: #fff;
+
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100vw;
+}
+
+.form-wrapper {
+  width: 100%;
+}
+
+#add-form-wrapper {}
+
+.form {
+  border-radius: 4px;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+
+}
+
+/* responsive form */
+@media screen and (min-width: 700px) {
+  .form {
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .form {
+    width: 55%;
+  }
+}
+
+@media screen and (min-width: 1220px) {
+  .form {
+    width: 35%;
+  }
+}
+
+.input {
+  width: 100%;
+  font-size: 2rem;
+  color: #fff;
+  padding:0.5rem 1rem;
+  transition: all 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.input::placeholder {
+  color: #e7e7e7;
+  font-size: 1.7rem;
+}
+
+.input:focus {
+  background: rgba(255, 255, 255, 0.4);
+
+}
+
+#add-input {}
+
+.form-btn {
+  width: 5rem;
+  height: 5rem;
+  font-size: 2.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  transition: all 0.3s;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-left: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+}
+.fa {
+  pointer-events: none;
+  
+}
+
+.form-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+
+}
+
+#add-btn {
+}
+
+.alert-text {}
+
+#edit-form-wrapper {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Add show form class to show or hide edit form */
+#edit-form-wrapper.show-form {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#edit-input {}
+
+.edit-btn {
+
+}
+
+.todo-list {}
+
+.footer {
+    text-align: center;
+}
+
+.footer-text {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-top: 10rem;
 }
