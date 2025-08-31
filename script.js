@@ -29,7 +29,13 @@ const updateTodos = () => {
         `;
     todoList.innerHTML += todoItem;
   });
+  if (todos.length === 0) {
+    alertText.textContent = "Todo list is empty!";
+    alertText.classList.add("show-alert-text");
+  }
 };
+
+updateTodos();
 
 // ADD NEW TODO
 addButton.addEventListener("click", (e) => {
@@ -46,8 +52,12 @@ addButton.addEventListener("click", (e) => {
   }
   //SHOW A WARNING IF THE EDIT INPUT IS EMPTY
   else {
+    alertText.textContent = "Please write something!";
     alertText.classList.add("show-alert-text");
     alertText.classList.add("animation-alert-text");
+    alertText.addEventListener("animationend", () => {
+      alertText.classList.remove("animation-alert-text");
+    });
   }
   // RESET TODO INPUT VALUE
   addInput.value = "";
@@ -90,7 +100,7 @@ editForm.addEventListener("submit", (e) => {
   }
   //SHOW A WARNING IF THE EDIT INPUT IS EMPTY
   else {
-    alertText.textContent = "Todo cannot be empty";
+    alertText.textContent = "Todo cannot be empty!";
     alertText.classList.add("show-alert-text");
     alertText.classList.add("animation-alert-text");
   }
