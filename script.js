@@ -5,6 +5,9 @@ const todoList = document.querySelector(".todo-list");
 const alertText = document.querySelector(".alert-text");
 const editButton = document.getElementById("edit-btn");
 const deleteButton = document.getElementById("delete-btn");
+const editFormWrapper = document.querySelector("#edit-form-wrapper");
+const editInput = document.querySelector("#edit-input");
+const editForm = document.querySelector("#edit-form");
 
 const todos = [];
 
@@ -16,7 +19,7 @@ const updateTodos = () => {
         <li class="todo-item">
           <span class="todo-text">${todo}</span>
 
-          <button class="todo-btn" id="edit-btn">
+          <button class="todo-btn" id="edit-btn" data-index=${index} onclick="editTodo(this)">
             <i class="fa fa-edit"></i>
           </button>
           <button class="todo-btn" id="delete-btn" data-index=${index} onclick="deleteTodo(this)">
@@ -40,7 +43,9 @@ addButton.addEventListener("click", (e) => {
     todos.push(value);
     // GET ALL TODOS FROM TODOS ARRAY AND SHOW IT
     updateTodos();
-  } else {
+  }
+  //SHOW A WARNING IF THE EDIT INPUT IS EMPTY
+  else {
     alertText.classList.add("show-alert-text");
     alertText.classList.add("animation-alert-text");
   }
@@ -54,3 +59,39 @@ const deleteTodo = (btn) => {
   todos.splice(index, 1);
   updateTodos();
 };
+
+// EDIT TODO
+const editTodo = (btn) => {
+  const index = btn.dataset.index;
+  editFormWrapper.classList.add("show-form");
+  editInput.value = todos[index];
+  editInput.dataset.index = index;
+  editInput.focus();
+};
+
+// CLOSE EDIT FORM WHEN CLICKING OUTSIDE OF IT
+editFormWrapper.addEventListener("click", () => {
+  editFormWrapper.classList.remove("show-form");
+});
+
+// PREVENT CLOSING THE FORM WHEN CLICKING ON THE EDIT INPUT
+editForm.addEventListener("click", (e) => {
+  e.stopPropagation();
+});
+
+// UPDATE TODO WITH EDITED VALUE
+editForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  editFormWrapper.classList.remove("show-form");
+  if (editInput.value.trim()) {
+    const todoIndex = editInput.dataset.index;
+    todos[todoIndex] = editInput.value;
+    updateTodos();
+  }
+  //SHOW A WARNING IF THE EDIT INPUT IS EMPTY
+  else {
+    alertText.textContent = "Todo cannot be empty";
+    alertText.classList.add("show-alert-text");
+    alertText.classList.add("animation-alert-text");
+  }
+});
