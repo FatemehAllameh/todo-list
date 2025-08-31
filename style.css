@@ -52,6 +52,7 @@ button {
 
 }
 
+/* MAIN */
 .container {
     display: flex;
     align-items: center;
@@ -249,6 +250,7 @@ button {
   background: #9f2b27;
 }
 
+/* FOOTER */
 .footer {
     text-align: center;
 }
