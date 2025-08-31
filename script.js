@@ -9,7 +9,14 @@ const editFormWrapper = document.querySelector("#edit-form-wrapper");
 const editInput = document.querySelector("#edit-input");
 const editForm = document.querySelector("#edit-form");
 
-const todos = [];
+// ALL TODOS TO SHOW
+const todos = JSON.parse(localStorage.getItem("todo")) || [];
+
+// SAVE TODOS INTO LOCAL STORAGE
+const saveTOLocalStorage = () => {
+  localStorage.setItem("todo", JSON.stringify(todos));
+};
+
 
 // UPDATE TODOS
 const updateTodos = () => {
@@ -47,7 +54,9 @@ addButton.addEventListener("click", (e) => {
   if (value !== "") {
     // ADD NEW TODO VALUE INTO TODO ARRAY
     todos.push(value);
-    // GET ALL TODOS FROM TODOS ARRAY AND SHOW IT
+    // Save current todos array to localStorage after adding a new todo
+    saveTOLocalStorage();
+    // GET ALL TODOS FROM TODOS ARRAY AND SHOW THEM
     updateTodos();
   }
   //SHOW A WARNING IF THE EDIT INPUT IS EMPTY
@@ -67,6 +76,9 @@ addButton.addEventListener("click", (e) => {
 const deleteTodo = (btn) => {
   const index = btn.dataset.index;
   todos.splice(index, 1);
+  // SAVE CURRENT TODOS ARRAY TO LOCALSTORAGE AFTER DELETING A TODO
+  saveTOLocalStorage();
+  // GET ALL TODOS FROM TODOS ARRAY AFTER DELETIND A TODO AND SHOW THEM
   updateTodos();
 };
 
@@ -96,6 +108,9 @@ editForm.addEventListener("submit", (e) => {
   if (editInput.value.trim()) {
     const todoIndex = editInput.dataset.index;
     todos[todoIndex] = editInput.value;
+    // SAVE CURRENT TODOS ARRAY TO LOCALSTORAGE AFTER EDITING A TODO
+    saveTOLocalStorage();
+  // GET ALL TODOS FROM TODOS ARRAY AFTER EDITING A TODO AND SHOW THEM
     updateTodos();
   }
   //SHOW A WARNING IF THE EDIT INPUT IS EMPTY
